@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanzo Wada Color Combinations</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 10px 10px;
+      min-height: 100vh;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 40px;
+      transition: background-color 0.3s ease;
+    }
+
+    body.light {
+      background-color: #fff;
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    }
+
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    body.light h1 {
+      color: #000;
+    }
+
+    .toggle-bg {
+      background: none;
+      border: 1px solid #444;
+      color: #aaa;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      letter-spacing: 1px;
+    }
+
+    .toggle-bg:hover {
+      border-color: #888;
+      color: #fff;
+    }
+
+    body.light .toggle-bg {
+      border-color: #bbb;
+      color: #666;
+    }
+
+    body.light .toggle-bg:hover {
+      border-color: #666;
+      color: #000;
+    }
+
+    .subtitle {
+      color: #666;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    body.light .subtitle {
+      color: #999;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .color-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .color-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .color-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .color-btn.selected {
+      display: none;
+    }
+
+    .color-swatch {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .color-btn:hover .color-swatch {
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+    }
+
+    body.light .color-btn:hover .color-swatch {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .color-name {
+      color: #aaa;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 8px;
+      text-align: center;
+      line-height: 1.3;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    body.light .color-name {
+      color: #555;
+    }
+
+    /* Expansion row: selected color + combos side by side */
+    .expansion-row {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.3s ease, padding 0.6s ease;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .expansion-row.open {
+      max-height: 5000px;
+      opacity: 1;
+      padding: 8px 0;
+    }
+
+    .expansion-selected {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+    }
+
+    .expansion-swatch {
+      width: 300px;
+      height: 300px;
+      border-radius: 16px;
+    }
+
+    .expansion-name {
+      color: #ccc;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 8px;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    body.light .expansion-name {
+      color: #444;
+    }
+
+    .combos-container {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: flex-start;
+    }
+
+    .combo-group {
+      display: flex;
+      gap: 4px;
+      padding: 6px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .combo-group:hover {
+      background: #252525;
+      transform: translateY(-2px);
+    }
+
+    body.light .combo-group {
+      background: #eee;
+    }
+
+    body.light .combo-group:hover {
+      background: #ddd;
+    }
+
+    .combo-color {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+    }
+
+    /* Index view */
+    .index-view {
+      display: none;
+      max-width: 1400px;
+      margin: 0 auto;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .index-view.active {
+      display: flex;
+    }
+
+    .grid.hidden {
+      display: none;
+    }
+
+    .index-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .index-color {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      cursor: pointer;
+    }
+
+    .index-color:hover {
+      opacity: 0.8;
+    }
+
+    .index-swatch {
+      width: 300px;
+      height: 300px;
+      border-radius: 16px;
+    }
+
+    .index-name {
+      color: #ccc;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 8px;
+      text-align: center;
+      line-height: 1.3;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    body.light .index-name {
+      color: #444;
+    }
+
+    .index-combos {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: flex-start;
+    }
+
+    .index-combo-group {
+      display: flex;
+      gap: 4px;
+      padding: 6px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .index-combo-group:hover {
+      background: #252525;
+    }
+
+    body.light .index-combo-group {
+      background: #eee;
+    }
+
+    body.light .index-combo-group:hover {
+      background: #ddd;
+    }
+
+    .index-combo-color {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Sanzo Wada</h1>
+    <div style="position: absolute; right: 0; display: flex; gap: 8px;">
+      <button class="toggle-bg" id="toggleIndex">INDEX</button>
+      <button class="toggle-bg" id="toggleBg">LIGHT</button>
+    </div>
+  </div>
+  <p class="subtitle">A Dictionary of Color Combinations</p>
+  <div class="grid" id="grid"></div>
+  <div class="index-view" id="indexView"></div>
+
+  <script>
+    let colorsData = [];
+    let combinationsData = {};
+    let colorsByIndex = {};
+    let btnsByIndex = {};
+    let selectedBtn = null;
+    let expansionRow = null;
+
+    Promise.all([
+      fetch('colors.json').then(r => r.json()),
+      fetch('combinations.json').then(r => r.json())
+    ]).then(([colors, combinations]) => {
+      colorsData = colors.colors;
+      combinationsData = combinations;
+      colorsData.forEach(c => { colorsByIndex[c.index] = c; });
+
+      const grid = document.getElementById('grid');
+      colorsData.forEach(color => {
+        const btn = document.createElement('button');
+        btn.className = 'color-btn';
+        btn.dataset.index = color.index;
+        btn.innerHTML = `
+          <div class="color-swatch" style="background-color: ${color.hex};"></div>
+          <span class="color-name">${color.name}</span>
+        `;
+        btn.addEventListener('click', () => selectColor(color.index));
+        grid.appendChild(btn);
+        btnsByIndex[color.index] = btn;
+      });
+    });
+
+    // Background toggle
+    document.getElementById('toggleBg').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const btn = document.getElementById('toggleBg');
+      btn.textContent = document.body.classList.contains('light') ? 'DARK' : 'LIGHT';
+    });
+
+    // Index view toggle
+    let indexBuilt = false;
+    document.getElementById('toggleIndex').addEventListener('click', () => {
+      const grid = document.getElementById('grid');
+      const indexView = document.getElementById('indexView');
+      const indexBtn = document.getElementById('toggleIndex');
+      const isIndexActive = indexView.classList.contains('active');
+
+      if (isIndexActive) {
+        indexView.classList.remove('active');
+        grid.classList.remove('hidden');
+        indexBtn.textContent = 'INDEX';
+      } else {
+        clearCombinations();
+        if (!indexBuilt) {
+          buildIndexView();
+          indexBuilt = true;
+        }
+        grid.classList.add('hidden');
+        indexView.classList.add('active');
+        indexBtn.textContent = 'GRID';
+      }
+    });
+
+    let indexRowsByIndex = {};
+
+    function scrollToIndexColor(colorIndex) {
+      const row = indexRowsByIndex[colorIndex];
+      if (row) {
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Brief highlight flash
+        row.style.outline = '2px solid rgba(255,255,255,0.4)';
+        row.style.borderRadius = '12px';
+        setTimeout(() => { row.style.outline = 'none'; }, 1500);
+      }
+    }
+
+    function buildIndexView() {
+      const indexView = document.getElementById('indexView');
+      colorsData.forEach(color => {
+        const row = document.createElement('div');
+        row.className = 'index-row';
+
+        // Color swatch
+        const colorEl = document.createElement('div');
+        colorEl.className = 'index-color';
+        colorEl.innerHTML = `
+          <div class="index-swatch" style="background-color: ${color.hex};"></div>
+          <span class="index-name">${color.name}</span>
+        `;
+        colorEl.addEventListener('click', () => {
+          scrollToIndexColor(color.index);
+        });
+
+        // Combos
+        const combosEl = document.createElement('div');
+        combosEl.className = 'index-combos';
+
+        color.combinations.forEach(comboId => {
+          const colorIndices = combinationsData[comboId] || [];
+          const group = document.createElement('div');
+          group.className = 'index-combo-group';
+          group.title = `Combination #${comboId}`;
+
+          colorIndices.forEach(idx => {
+            const c = colorsByIndex[idx];
+            if (c) {
+              const swatch = document.createElement('div');
+              swatch.className = 'index-combo-color';
+              swatch.style.backgroundColor = c.hex;
+              swatch.title = c.name;
+              swatch.style.cursor = 'pointer';
+              swatch.addEventListener('click', (e) => {
+                e.stopPropagation();
+                scrollToIndexColor(idx);
+              });
+              group.appendChild(swatch);
+            }
+          });
+
+          combosEl.appendChild(group);
+        });
+
+        row.appendChild(colorEl);
+        row.appendChild(combosEl);
+        indexView.appendChild(row);
+        indexRowsByIndex[color.index] = row;
+      });
+
+    }
+
+    function clearCombinations() {
+      if (expansionRow) {
+        expansionRow.remove();
+        expansionRow = null;
+      }
+      if (selectedBtn) {
+        selectedBtn.classList.remove('selected');
+        selectedBtn = null;
+      }
+    }
+
+    function selectColor(colorIndex) {
+      const color = colorsByIndex[colorIndex];
+      const btn = btnsByIndex[colorIndex];
+      if (!color || !btn) return;
+
+      // Clicking the same color closes it
+      if (selectedBtn === btn) {
+        clearCombinations();
+        return;
+      }
+
+      // Remove previous expansion immediately if switching
+      if (expansionRow) {
+        expansionRow.remove();
+        expansionRow = null;
+      }
+      if (selectedBtn) {
+        selectedBtn.classList.remove('selected');
+      }
+
+      selectedBtn = btn;
+      btn.classList.add('selected');
+
+      // Create expansion row
+      expansionRow = document.createElement('div');
+      expansionRow.className = 'expansion-row';
+
+      // Selected color display (clickable to close)
+      const selectedDisplay = document.createElement('div');
+      selectedDisplay.className = 'expansion-selected';
+      selectedDisplay.style.cursor = 'pointer';
+      selectedDisplay.innerHTML = `
+        <div class="expansion-swatch" style="background-color: ${color.hex};"></div>
+        <span class="expansion-name">${color.name}</span>
+      `;
+      selectedDisplay.addEventListener('click', () => clearCombinations());
+
+      // Combos container
+      const combosContainer = document.createElement('div');
+      combosContainer.className = 'combos-container';
+
+      color.combinations.forEach(comboId => {
+        const colorIndices = combinationsData[comboId] || [];
+        const group = document.createElement('div');
+        group.className = 'combo-group';
+        group.title = `Combination #${comboId}`;
+
+        colorIndices.forEach(idx => {
+          const c = colorsByIndex[idx];
+          if (c) {
+            const swatch = document.createElement('div');
+            swatch.className = 'combo-color';
+            swatch.style.backgroundColor = c.hex;
+            swatch.title = c.name;
+            // Click a combo color to navigate to that color
+            swatch.style.cursor = 'pointer';
+            swatch.addEventListener('click', (e) => {
+              e.stopPropagation();
+              selectColor(idx);
+            });
+            group.appendChild(swatch);
+          }
+        });
+
+        combosContainer.appendChild(group);
+      });
+
+      expansionRow.appendChild(selectedDisplay);
+      expansionRow.appendChild(combosContainer);
+
+      // Insert right after the selected button (which is now hidden)
+      btn.after(expansionRow);
+
+      // Trigger open animation
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          expansionRow.classList.add('open');
+        });
+
+        // Smooth scroll
+        setTimeout(() => {
+          expansionRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      });
+    }
+  </script>
+</body>
+</html>
