@@ -564,6 +564,53 @@
       background: #bbb;
     }
 
+    /* Combo popup */
+    .combo-popup {
+      position: absolute;
+      z-index: 100;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 200px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    body.light .combo-popup {
+      background: #f5f5f5;
+      border-color: #ccc;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .combo-popup-btn {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 13px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      text-align: left;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .combo-popup-btn:hover {
+      background: #333;
+    }
+
+    body.light .combo-popup-btn {
+      color: #333;
+    }
+
+    body.light .combo-popup-btn:hover {
+      background: #e0e0e0;
+    }
+
     /* Copy toast */
     .copy-toast {
       position: fixed;
@@ -607,26 +654,26 @@
       }
 
       h1 {
-        font-size: 20px;
+        font-size: 22px;
         letter-spacing: 2px;
       }
 
       .subtitle {
         margin-bottom: 20px;
-        font-size: 11px;
+        font-size: 12px;
       }
 
       .grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
       }
 
       .color-name {
-        font-size: 11px;
+        font-size: 13px;
       }
 
       .color-hex {
-        font-size: 9px;
+        font-size: 12px;
       }
 
       .expansion-row {
@@ -636,146 +683,186 @@
       }
 
       .expansion-selected {
-        width: 120px;
+        width: 60vw;
+        max-width: 280px;
       }
 
       .expansion-swatch {
-        width: 120px;
-        height: 120px;
+        width: 60vw;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 1;
         border-radius: 12px;
       }
 
       .expansion-name {
-        font-size: 11px;
+        font-size: 14px;
+      }
+
+      .expansion-hex {
+        font-size: 13px;
       }
 
       .combos-container {
         justify-content: center;
-        gap: 6px;
+        gap: 8px;
+        width: 100%;
       }
 
       .combo-group {
-        padding: 4px;
-        gap: 3px;
+        padding: 6px;
+        gap: 4px;
       }
 
       .combo-color {
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
+        width: 56px;
+        height: 56px;
+        border-radius: 8px;
       }
 
       .combo-hex {
-        font-size: 7px;
+        font-size: 10px;
       }
 
       .index-view {
-        gap: 20px;
+        gap: 24px;
       }
 
       .index-row {
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
 
       .index-color {
-        width: 120px;
+        width: 60vw;
+        max-width: 280px;
       }
 
       .index-swatch {
-        width: 120px;
-        height: 120px;
+        width: 60vw;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 1;
         border-radius: 12px;
       }
 
       .index-name {
-        font-size: 12px;
-        max-width: 120px;
+        font-size: 14px;
+        max-width: 280px;
+      }
+
+      .index-hex {
+        font-size: 13px;
       }
 
       .index-combos {
         justify-content: center;
-        gap: 6px;
+        gap: 8px;
       }
 
       .index-combo-group {
-        padding: 4px;
-        gap: 3px;
+        padding: 6px;
+        gap: 4px;
       }
 
       .index-combo-color {
-        width: 36px;
-        height: 36px;
-        border-radius: 6px;
+        width: 56px;
+        height: 56px;
+        border-radius: 8px;
       }
 
       .index-combo-hex {
-        font-size: 7px;
+        font-size: 10px;
       }
 
       .about-view {
-        font-size: 15px;
+        font-size: 16px;
         padding: 0 8px;
+      }
+
+      .combo-popup {
+        min-width: 180px;
+      }
+
+      .combo-popup-btn {
+        font-size: 14px;
+        padding: 10px 12px;
       }
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+
       .grid {
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        gap: 8px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
       }
 
       .color-name {
-        font-size: 9px;
-        margin-top: 4px;
+        font-size: 12px;
+        margin-top: 6px;
       }
 
       .color-hex {
-        font-size: 8px;
+        font-size: 11px;
       }
 
       .expansion-selected {
-        width: 90px;
+        width: 70vw;
+        max-width: 260px;
       }
 
       .expansion-swatch {
-        width: 90px;
-        height: 90px;
+        width: 70vw;
+        max-width: 260px;
+      }
+
+      .expansion-name {
+        font-size: 13px;
       }
 
       .combo-color {
-        width: 28px;
-        height: 28px;
-        border-radius: 5px;
+        width: 48px;
+        height: 48px;
+        border-radius: 7px;
       }
 
       .combo-hex {
-        font-size: 6px;
+        font-size: 9px;
       }
 
       .index-color {
-        width: 90px;
+        width: 70vw;
+        max-width: 260px;
       }
 
       .index-swatch {
-        width: 90px;
-        height: 90px;
+        width: 70vw;
+        max-width: 260px;
       }
 
       .index-name {
-        font-size: 10px;
-        max-width: 90px;
+        font-size: 13px;
+        max-width: 260px;
       }
 
       .index-combo-color {
-        width: 28px;
-        height: 28px;
-        border-radius: 5px;
+        width: 48px;
+        height: 48px;
+        border-radius: 7px;
       }
 
       .index-combo-hex {
-        font-size: 6px;
+        font-size: 9px;
+      }
+
+      .toggle-bg {
+        font-size: 11px;
+        padding: 5px 0;
+        width: 60px;
       }
     }
   </style>
@@ -823,6 +910,79 @@
     let selectedBtn = null;
     let expansionRow = null;
     let currentView = 'grid'; // 'grid', 'index', 'about'
+    let activePopup = null;
+
+    function dismissPopup() {
+      if (activePopup) {
+        activePopup.remove();
+        activePopup = null;
+      }
+    }
+
+    document.addEventListener('click', () => dismissPopup());
+
+    function showComboPopup(e, colorIdx, comboId, navigateFn) {
+      e.stopPropagation();
+      dismissPopup();
+
+      const c = colorsByIndex[colorIdx];
+      if (!c) return;
+
+      const popup = document.createElement('div');
+      popup.className = 'combo-popup';
+
+      // Option 1: See combinations
+      const seeBtn = document.createElement('button');
+      seeBtn.className = 'combo-popup-btn';
+      seeBtn.textContent = `See combinations for: ${c.name}`;
+      seeBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        dismissPopup();
+        navigateFn(colorIdx);
+      });
+
+      // Option 2: Copy combination hex values
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'combo-popup-btn';
+      copyBtn.textContent = 'Copy combination hex values';
+      copyBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        dismissPopup();
+        const indices = combinationsData[comboId] || [];
+        const hexValues = indices.map(i => colorsByIndex[i]?.hex).filter(Boolean).join(', ');
+        navigator.clipboard.writeText(hexValues).then(() => {
+          const toast = document.getElementById('copyToast');
+          toast.textContent = `Copied ${hexValues}`;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 1500);
+        });
+      });
+
+      popup.appendChild(seeBtn);
+      popup.appendChild(copyBtn);
+
+      // Position relative to the clicked element
+      const target = e.currentTarget;
+      const parent = target.closest('.combo-group, .index-combo-group');
+      if (parent) {
+        parent.style.position = 'relative';
+        parent.appendChild(popup);
+        // Adjust if off screen
+        requestAnimationFrame(() => {
+          const rect = popup.getBoundingClientRect();
+          if (rect.right > window.innerWidth) {
+            popup.style.right = '0';
+            popup.style.left = 'auto';
+          }
+          if (rect.bottom > window.innerHeight) {
+            popup.style.bottom = '100%';
+            popup.style.top = 'auto';
+          }
+        });
+      }
+
+      activePopup = popup;
+    }
 
     Promise.all([
       fetch('colors.json').then(r => r.json()),
@@ -976,8 +1136,7 @@
               swatch.title = c.name;
               swatch.style.cursor = 'pointer';
               swatch.addEventListener('click', (e) => {
-                e.stopPropagation();
-                scrollToIndexColor(idx);
+                showComboPopup(e, idx, comboId, scrollToIndexColor);
               });
 
               const hex = document.createElement('span');
@@ -1074,8 +1233,7 @@
             swatch.title = c.name;
             swatch.style.cursor = 'pointer';
             swatch.addEventListener('click', (e) => {
-              e.stopPropagation();
-              selectColor(idx);
+              showComboPopup(e, idx, comboId, selectColor);
             });
 
             const hex = document.createElement('span');
