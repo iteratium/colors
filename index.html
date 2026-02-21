@@ -173,7 +173,7 @@
     .expansion-row.open {
       max-height: 5000px;
       opacity: 1;
-      padding: 8px 0;
+      padding: 8px 4px;
     }
 
     .expansion-selected {
@@ -188,6 +188,11 @@
       width: 300px;
       height: 300px;
       border-radius: 16px;
+      box-shadow: 0 0 0 3px #fff;
+    }
+
+    body.light .expansion-swatch {
+      box-shadow: 0 0 0 3px #000;
     }
 
     .expansion-name {
@@ -281,6 +286,15 @@
       width: 300px;
       height: 300px;
       border-radius: 16px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .index-row.highlighted .index-swatch {
+      box-shadow: 0 0 0 3px #fff;
+    }
+
+    body.light .index-row.highlighted .index-swatch {
+      box-shadow: 0 0 0 3px #000;
     }
 
     .index-name {
@@ -575,14 +589,17 @@
 
     let indexRowsByIndex = {};
 
+    let highlightedRow = null;
+
     function scrollToIndexColor(colorIndex) {
       const row = indexRowsByIndex[colorIndex];
       if (row) {
+        // Remove previous highlight
+        if (highlightedRow) highlightedRow.classList.remove('highlighted');
+        // Add highlight to new row
+        row.classList.add('highlighted');
+        highlightedRow = row;
         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // Brief highlight flash
-        row.style.outline = '2px solid rgba(255,255,255,0.4)';
-        row.style.borderRadius = '12px';
-        setTimeout(() => { row.style.outline = 'none'; }, 1500);
       }
     }
 
