@@ -1,4 +1,4 @@
-# Sanzo Wada — A Dictionary of Color Combinations
+# Sanzo Wada - A Dictionary of Color Combinations
 
 An interactive web exploration of the 348 color combinations from **Sanzo Wada's** 1934 masterwork *A Dictionary of Color Combinations* (配色総鑑).
 
@@ -6,16 +6,16 @@ An interactive web exploration of the 348 color combinations from **Sanzo Wada's
 
 ## Features
 
-- **Grid view** — Browse all 157 colors as clickable swatches. Click any color to see its combinations inline.
-- **Index view** — A full list of every color with all its combinations displayed side by side.
-- **Navigate by clicking** — Click any color within a combination to jump to that color and explore its palettes.
-- **Dark / Light mode** — Toggle between black and white backgrounds.
-- **Responsive** — Works on desktop, tablet, and mobile.
+- **Grid view** - Browse all 157 colors as clickable swatches. Click any color to see its combinations inline.
+- **Index view** - A full list of every color with all its combinations displayed side by side.
+- **Navigate by clicking** - Click any color within a combination to jump to that color and explore its palettes.
+- **Dark / Light mode** - Toggle between black and white backgrounds.
+- **Responsive** - Works on desktop, tablet, and mobile.
 
 ## Data
 
-- `colors.json` — 157 colors with name, hex, RGB, CMYK, and combination references.
-- `combinations.json` — 348 palettes, each mapping to the color indices that form that combination.
+- `colors.json` - 157 colors with name, hex, RGB, CMYK, and combination references.
+- `combinations.json` - 348 palettes, each mapping to the color indices that form that combination.
 
 ## About Wada Sanzo
 
@@ -25,7 +25,7 @@ Wada Sanzō was born in Hyogo Prefecture, moving to Fukuoka with his family at a
 
 Wada became a faculty member of the Imperial Art Institute 日本芸術院 and founded the Japan Standard Color Association 日本標準色協会 in 1927. In 1932 he was appointed professor at the Design Department of Tokyo School of the Arts where he served until 1944. Wada was a leading color theorist and created one of the first systematic approaches to color in Japan, published in the eleven-volume boxed series *Color Schemes* 配色総鑑 in 1934. The series was the first mass-produced in-depth analysis of color pairings and combinations, laying the groundwork for modern color studies in Japan. Each box contained another immaculately-bound two-color printed gatefold box which held a series of 30 postcard-sized pieces of cardstock each. The cards were incredibly precisely printed and die-cut squares of color combinations glued on top of bilingual English, kanji, and hiragana letterpress-printed color descriptions of each color dyad, triad, or tetrad. The entire collection is a tour de force of both print production and consideration of the impact of color.
 
-Wada reorganized the Japan Standard Color Association into the Japan Color Research Laboratory in 1945, and served as its president. He was also an award-winning designer — his poster for the ill-fated 1940 Tokyo Olympics won out against other competitors in the late 1930s and Wada also won the Costume Design Award at the 27th Academy Awards in 1954 for his work for the movie *Hell's Gate* 地獄門. Wada was prolific in regards to designing postcards, painting, printmaking and creating illustration work.
+Wada reorganized the Japan Standard Color Association into the Japan Color Research Laboratory in 1945, and served as its president. He was also an award-winning designer - his poster for the ill-fated 1940 Tokyo Olympics won out against other competitors in the late 1930s and Wada also won the Costume Design Award at the 27th Academy Awards in 1954 for his work for the movie *Hell's Gate* 地獄門. Wada was prolific in regards to designing postcards, painting, printmaking and creating illustration work.
 
 His book *The Story of Color* 色彩の話 was published in 1952 and reprinted in 1957.
 
