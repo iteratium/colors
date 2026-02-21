@@ -52,12 +52,19 @@
       color: #000;
     }
 
+    .header-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
     .toggle-bg {
       background: none;
       border: 1px solid #444;
       color: #aaa;
       font-size: 12px;
-      padding: 6px 14px;
+      padding: 6px 0;
+      width: 70px;
+      text-align: center;
       border-radius: 20px;
       cursor: pointer;
       transition: border-color 0.2s, color 0.2s, background 0.2s;
@@ -156,7 +163,28 @@
       color: #555;
     }
 
-    /* Expansion row: selected color + combos side by side */
+    .color-hex {
+      color: #666;
+      font-size: 14px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      margin-top: 2px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .color-hex:hover {
+      color: #fff;
+    }
+
+    body.light .color-hex {
+      color: #999;
+    }
+
+    body.light .color-hex:hover {
+      color: #000;
+    }
+
+    /* Expansion row */
     .expansion-row {
       grid-column: 1 / -1;
       display: flex;
@@ -208,6 +236,27 @@
       color: #444;
     }
 
+    .expansion-hex {
+      color: #666;
+      font-size: 14px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      margin-top: 2px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .expansion-hex:hover {
+      color: #fff;
+    }
+
+    body.light .expansion-hex {
+      color: #999;
+    }
+
+    body.light .expansion-hex:hover {
+      color: #000;
+    }
+
     .combos-container {
       flex: 1;
       min-width: 0;
@@ -240,16 +289,43 @@
       background: #ddd;
     }
 
+    .combo-color-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
     .combo-color {
       width: 72px;
       height: 72px;
       border-radius: 10px;
     }
 
+    .combo-hex {
+      color: #555;
+      font-size: 12px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .combo-hex:hover {
+      color: #fff;
+    }
+
+    body.light .combo-hex {
+      color: #999;
+    }
+
+    body.light .combo-hex:hover {
+      color: #000;
+    }
+
     /* Index view */
     .index-view {
       display: none;
-      max-width: 1400px;
+      max-width: 1800px;
       margin: 0 auto;
       flex-direction: column;
       gap: 12px;
@@ -315,6 +391,27 @@
       color: #444;
     }
 
+    .index-hex {
+      color: #666;
+      font-size: 14px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      margin-top: 2px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .index-hex:hover {
+      color: #fff;
+    }
+
+    body.light .index-hex {
+      color: #999;
+    }
+
+    body.light .index-hex:hover {
+      color: #000;
+    }
+
     .index-combos {
       flex: 1;
       min-width: 0;
@@ -346,11 +443,154 @@
       background: #ddd;
     }
 
+    .index-combo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
     .index-combo-color {
       width: 72px;
       height: 72px;
       border-radius: 10px;
     }
+
+    .index-combo-hex {
+      color: #555;
+      font-size: 12px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .index-combo-hex:hover {
+      color: #fff;
+    }
+
+    body.light .index-combo-hex {
+      color: #999;
+    }
+
+    body.light .index-combo-hex:hover {
+      color: #000;
+    }
+
+    /* About view */
+    .about-view {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .about-view.active {
+      display: block;
+    }
+
+    body.light .about-view {
+      color: #444;
+    }
+
+    .about-view h2 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      margin-top: 32px;
+      transition: color 0.3s ease;
+    }
+
+    .about-view h2:first-child {
+      margin-top: 0;
+    }
+
+    body.light .about-view h2 {
+      color: #000;
+    }
+
+    .about-view p {
+      margin-bottom: 16px;
+    }
+
+    .about-view a {
+      color: #88f;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .about-view a:hover {
+      color: #bbf;
+      text-decoration: underline;
+    }
+
+    body.light .about-view a {
+      color: #33c;
+    }
+
+    body.light .about-view a:hover {
+      color: #118;
+    }
+
+    .about-view ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 16px;
+    }
+
+    .about-view li {
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .about-view li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #555;
+    }
+
+    body.light .about-view li::before {
+      background: #bbb;
+    }
+
+    /* Copy toast */
+    .copy-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #333;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    body.light .copy-toast {
+      background: #222;
+    }
+
     /* Mobile responsive */
     @media (max-width: 768px) {
       body {
@@ -362,7 +602,7 @@
         gap: 12px;
       }
 
-      .header > div {
+      .header-buttons {
         position: static !important;
       }
 
@@ -385,7 +625,10 @@
         font-size: 11px;
       }
 
-      /* Expansion row stacks vertically on mobile */
+      .color-hex {
+        font-size: 9px;
+      }
+
       .expansion-row {
         flex-direction: column;
         align-items: center;
@@ -422,7 +665,10 @@
         border-radius: 6px;
       }
 
-      /* Index view mobile */
+      .combo-hex {
+        font-size: 7px;
+      }
+
       .index-view {
         gap: 20px;
       }
@@ -463,6 +709,15 @@
         height: 36px;
         border-radius: 6px;
       }
+
+      .index-combo-hex {
+        font-size: 7px;
+      }
+
+      .about-view {
+        font-size: 15px;
+        padding: 0 8px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -474,6 +729,10 @@
       .color-name {
         font-size: 9px;
         margin-top: 4px;
+      }
+
+      .color-hex {
+        font-size: 8px;
       }
 
       .expansion-selected {
@@ -489,6 +748,10 @@
         width: 28px;
         height: 28px;
         border-radius: 5px;
+      }
+
+      .combo-hex {
+        font-size: 6px;
       }
 
       .index-color {
@@ -510,20 +773,47 @@
         height: 28px;
         border-radius: 5px;
       }
+
+      .index-combo-hex {
+        font-size: 6px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
     <h1>Sanzo Wada</h1>
-    <div style="position: absolute; right: 0; display: flex; gap: 8px;">
+    <div class="header-buttons" style="position: absolute; right: 0;">
       <button class="toggle-bg" id="toggleIndex">INDEX</button>
+      <button class="toggle-bg" id="toggleAbout">ABOUT</button>
       <button class="toggle-bg" id="toggleBg">LIGHT</button>
     </div>
   </div>
   <p class="subtitle">A Dictionary of Color Combinations</p>
   <div class="grid" id="grid"></div>
   <div class="index-view" id="indexView"></div>
+  <div class="about-view" id="aboutView">
+    <h2>About</h2>
+    <p>An interactive web exploration of the 348 color combinations from <strong>Sanzo Wada's</strong> 1934 masterwork <em>A Dictionary of Color Combinations</em> (配色総鑑). Browse all 157 colors, click to explore their curated palettes, and discover harmonious combinations from nearly a century ago.</p>
+
+    <h2>Wada Sanz&#333; 和田 三造</h2>
+    <p><strong>1883&ndash;1967</strong></p>
+    <p>Wada Sanz&#333; was born in Hyogo Prefecture, moving to Fukuoka with his family at age 13, and moved again to Tokyo at age 16 with the intention of becoming a painter. In Tokyo, Wada studied under Kuroda Seiki both privately and at the Tokyo School of the Arts and was a member of the Hakubakai artists' society, with whom he exhibited his works. Wada was sent to France by the Ministry of Education to study art in 1909. He stayed in Europe until 1914, returning to Japan in 1915 after a year-long stay in India and Burma (now Myanmar) studying the arts of those cultures.</p>
+    <p>Wada became a faculty member of the Imperial Art Institute 日本芸術院 and founded the Japan Standard Color Association 日本標準色協会 in 1927. In 1932 he was appointed professor at the Design Department of Tokyo School of the Arts where he served until 1944. Wada was a leading color theorist and created one of the first systematic approaches to color in Japan, published in the eleven-volume boxed series <em>Color Schemes</em> 配色総鑑 in 1934. The series was the first mass-produced in-depth analysis of color pairings and combinations, laying the groundwork for modern color studies in Japan. Each box contained another immaculately-bound two-color printed gatefold box which held a series of 30 postcard-sized pieces of cardstock each. The cards were incredibly precisely printed and die-cut squares of color combinations glued on top of bilingual English, kanji, and hiragana letterpress-printed color descriptions of each color dyad, triad, or tetrad. The entire collection is a tour de force of both print production and consideration of the impact of color.</p>
+    <p>Wada reorganized the Japan Standard Color Association into the Japan Color Research Laboratory in 1945, and served as its president. He was also an award-winning designer &mdash; his poster for the ill-fated 1940 Tokyo Olympics won out against other competitors in the late 1930s and Wada also won the Costume Design Award at the 27th Academy Awards in 1954 for his work for the movie <em>Hell's Gate</em> 地獄門. Wada was prolific in regards to designing postcards, painting, printmaking and creating illustration work.</p>
+    <p>His book <em>The Story of Color</em> 色彩の話 was published in 1952 and reprinted in 1957.</p>
+
+    <h2>Credits</h2>
+    <ul>
+      <li><strong>Book:</strong> <em>A Dictionary of Color Combinations</em> by Sanzo Wada</li>
+      <li><strong>Original digital design &amp; development:</strong> <a href="https://sanzo-wada.dmbk.io" target="_blank">Dain Blodorn Kim</a></li>
+      <li><strong>Biography:</strong> Ian Lynam</li>
+      <li><strong>GitHub Repository:</strong> <a href="https://github.com/dblodorn/sanzo-wada" target="_blank">dblodorn/sanzo-wada</a></li>
+      <li><strong>Open source contributions:</strong> Paolo Tremadio, Matt DesLauriers, Takayosi Amagi</li>
+      <li><strong>Related projects:</strong> <a href="https://github.com/jmaasch/sanzo" target="_blank">R Package for Data Visualization</a> by Jacqueline Maasch</li>
+    </ul>
+  </div>
+  <div class="copy-toast" id="copyToast"></div>
 
   <script>
     let colorsData = [];
@@ -532,6 +822,7 @@
     let btnsByIndex = {};
     let selectedBtn = null;
     let expansionRow = null;
+    let currentView = 'grid'; // 'grid', 'index', 'about'
 
     Promise.all([
       fetch('colors.json').then(r => r.json()),
@@ -549,12 +840,27 @@
         btn.innerHTML = `
           <div class="color-swatch" style="background-color: ${color.hex};"></div>
           <span class="color-name">${color.name}</span>
+          <span class="color-hex" data-hex="${color.hex}">${color.hex}</span>
         `;
+        btn.querySelector('.color-hex').addEventListener('click', (e) => {
+          e.stopPropagation();
+          copyHex(color.hex);
+        });
         btn.addEventListener('click', () => selectColor(color.index));
         grid.appendChild(btn);
         btnsByIndex[color.index] = btn;
       });
     });
+
+    // Copy hex to clipboard
+    function copyHex(hex) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const toast = document.getElementById('copyToast');
+        toast.textContent = `Copied ${hex}`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      });
+    }
 
     // Background toggle
     document.getElementById('toggleBg').addEventListener('click', () => {
@@ -563,40 +869,65 @@
       btn.textContent = document.body.classList.contains('light') ? 'DARK' : 'LIGHT';
     });
 
-    // Index view toggle
-    let indexBuilt = false;
-    document.getElementById('toggleIndex').addEventListener('click', () => {
+    function switchView(view) {
       const grid = document.getElementById('grid');
       const indexView = document.getElementById('indexView');
+      const aboutView = document.getElementById('aboutView');
       const indexBtn = document.getElementById('toggleIndex');
-      const isIndexActive = indexView.classList.contains('active');
+      const aboutBtn = document.getElementById('toggleAbout');
 
-      if (isIndexActive) {
-        indexView.classList.remove('active');
+      // Hide all
+      clearCombinations();
+      grid.classList.add('hidden');
+      indexView.classList.remove('active');
+      aboutView.classList.remove('active');
+      indexBtn.textContent = 'INDEX';
+      aboutBtn.textContent = 'ABOUT';
+
+      if (view === 'grid') {
         grid.classList.remove('hidden');
-        indexBtn.textContent = 'INDEX';
-      } else {
-        clearCombinations();
+        currentView = 'grid';
+      } else if (view === 'index') {
         if (!indexBuilt) {
           buildIndexView();
           indexBuilt = true;
         }
-        grid.classList.add('hidden');
         indexView.classList.add('active');
         indexBtn.textContent = 'GRID';
+        currentView = 'index';
+      } else if (view === 'about') {
+        aboutView.classList.add('active');
+        aboutBtn.textContent = 'GRID';
+        currentView = 'about';
+      }
+    }
+
+    // Index view toggle
+    let indexBuilt = false;
+    document.getElementById('toggleIndex').addEventListener('click', () => {
+      if (currentView === 'index') {
+        switchView('grid');
+      } else {
+        switchView('index');
+      }
+    });
+
+    // About view toggle
+    document.getElementById('toggleAbout').addEventListener('click', () => {
+      if (currentView === 'about') {
+        switchView('grid');
+      } else {
+        switchView('about');
       }
     });
 
     let indexRowsByIndex = {};
-
     let highlightedRow = null;
 
     function scrollToIndexColor(colorIndex) {
       const row = indexRowsByIndex[colorIndex];
       if (row) {
-        // Remove previous highlight
         if (highlightedRow) highlightedRow.classList.remove('highlighted');
-        // Add highlight to new row
         row.classList.add('highlighted');
         highlightedRow = row;
         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -609,18 +940,21 @@
         const row = document.createElement('div');
         row.className = 'index-row';
 
-        // Color swatch
         const colorEl = document.createElement('div');
         colorEl.className = 'index-color';
         colorEl.innerHTML = `
           <div class="index-swatch" style="background-color: ${color.hex};"></div>
           <span class="index-name">${color.name}</span>
+          <span class="index-hex" data-hex="${color.hex}">${color.hex}</span>
         `;
+        colorEl.querySelector('.index-hex').addEventListener('click', (e) => {
+          e.stopPropagation();
+          copyHex(color.hex);
+        });
         colorEl.addEventListener('click', () => {
           scrollToIndexColor(color.index);
         });
 
-        // Combos
         const combosEl = document.createElement('div');
         combosEl.className = 'index-combos';
 
@@ -633,6 +967,9 @@
           colorIndices.forEach(idx => {
             const c = colorsByIndex[idx];
             if (c) {
+              const wrapper = document.createElement('div');
+              wrapper.className = 'index-combo-wrapper';
+
               const swatch = document.createElement('div');
               swatch.className = 'index-combo-color';
               swatch.style.backgroundColor = c.hex;
@@ -642,7 +979,18 @@
                 e.stopPropagation();
                 scrollToIndexColor(idx);
               });
-              group.appendChild(swatch);
+
+              const hex = document.createElement('span');
+              hex.className = 'index-combo-hex';
+              hex.textContent = c.hex;
+              hex.addEventListener('click', (e) => {
+                e.stopPropagation();
+                copyHex(c.hex);
+              });
+
+              wrapper.appendChild(swatch);
+              wrapper.appendChild(hex);
+              group.appendChild(wrapper);
             }
           });
 
@@ -654,7 +1002,6 @@
         indexView.appendChild(row);
         indexRowsByIndex[color.index] = row;
       });
-
     }
 
     function clearCombinations() {
@@ -673,13 +1020,11 @@
       const btn = btnsByIndex[colorIndex];
       if (!color || !btn) return;
 
-      // Clicking the same color closes it
       if (selectedBtn === btn) {
         clearCombinations();
         return;
       }
 
-      // Remove previous expansion immediately if switching
       if (expansionRow) {
         expansionRow.remove();
         expansionRow = null;
@@ -691,21 +1036,23 @@
       selectedBtn = btn;
       btn.classList.add('selected');
 
-      // Create expansion row
       expansionRow = document.createElement('div');
       expansionRow.className = 'expansion-row';
 
-      // Selected color display (clickable to close)
       const selectedDisplay = document.createElement('div');
       selectedDisplay.className = 'expansion-selected';
       selectedDisplay.style.cursor = 'pointer';
       selectedDisplay.innerHTML = `
         <div class="expansion-swatch" style="background-color: ${color.hex};"></div>
         <span class="expansion-name">${color.name}</span>
+        <span class="expansion-hex" data-hex="${color.hex}">${color.hex}</span>
       `;
+      selectedDisplay.querySelector('.expansion-hex').addEventListener('click', (e) => {
+        e.stopPropagation();
+        copyHex(color.hex);
+      });
       selectedDisplay.addEventListener('click', () => clearCombinations());
 
-      // Combos container
       const combosContainer = document.createElement('div');
       combosContainer.className = 'combos-container';
 
@@ -718,17 +1065,30 @@
         colorIndices.forEach(idx => {
           const c = colorsByIndex[idx];
           if (c) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'combo-color-wrapper';
+
             const swatch = document.createElement('div');
             swatch.className = 'combo-color';
             swatch.style.backgroundColor = c.hex;
             swatch.title = c.name;
-            // Click a combo color to navigate to that color
             swatch.style.cursor = 'pointer';
             swatch.addEventListener('click', (e) => {
               e.stopPropagation();
               selectColor(idx);
             });
-            group.appendChild(swatch);
+
+            const hex = document.createElement('span');
+            hex.className = 'combo-hex';
+            hex.textContent = c.hex;
+            hex.addEventListener('click', (e) => {
+              e.stopPropagation();
+              copyHex(c.hex);
+            });
+
+            wrapper.appendChild(swatch);
+            wrapper.appendChild(hex);
+            group.appendChild(wrapper);
           }
         });
 
@@ -738,16 +1098,13 @@
       expansionRow.appendChild(selectedDisplay);
       expansionRow.appendChild(combosContainer);
 
-      // Insert right after the selected button (which is now hidden)
       btn.after(expansionRow);
 
-      // Trigger open animation
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           expansionRow.classList.add('open');
         });
 
-        // Smooth scroll
         setTimeout(() => {
           expansionRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
