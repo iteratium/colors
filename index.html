@@ -337,6 +337,166 @@
       height: 72px;
       border-radius: 10px;
     }
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .header > div {
+        position: static !important;
+      }
+
+      h1 {
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        margin-bottom: 20px;
+        font-size: 11px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+      }
+
+      .color-name {
+        font-size: 11px;
+      }
+
+      /* Expansion row stacks vertically on mobile */
+      .expansion-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .expansion-selected {
+        width: 120px;
+      }
+
+      .expansion-swatch {
+        width: 120px;
+        height: 120px;
+        border-radius: 12px;
+      }
+
+      .expansion-name {
+        font-size: 11px;
+      }
+
+      .combos-container {
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .combo-group {
+        padding: 4px;
+        gap: 3px;
+      }
+
+      .combo-color {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+      }
+
+      /* Index view mobile */
+      .index-view {
+        gap: 20px;
+      }
+
+      .index-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .index-color {
+        width: 120px;
+      }
+
+      .index-swatch {
+        width: 120px;
+        height: 120px;
+        border-radius: 12px;
+      }
+
+      .index-name {
+        font-size: 12px;
+        max-width: 120px;
+      }
+
+      .index-combos {
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .index-combo-group {
+        padding: 4px;
+        gap: 3px;
+      }
+
+      .index-combo-color {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 8px;
+      }
+
+      .color-name {
+        font-size: 9px;
+        margin-top: 4px;
+      }
+
+      .expansion-selected {
+        width: 90px;
+      }
+
+      .expansion-swatch {
+        width: 90px;
+        height: 90px;
+      }
+
+      .combo-color {
+        width: 28px;
+        height: 28px;
+        border-radius: 5px;
+      }
+
+      .index-color {
+        width: 90px;
+      }
+
+      .index-swatch {
+        width: 90px;
+        height: 90px;
+      }
+
+      .index-name {
+        font-size: 10px;
+        max-width: 90px;
+      }
+
+      .index-combo-color {
+        width: 28px;
+        height: 28px;
+        border-radius: 5px;
+      }
+    }
   </style>
 </head>
 <body>
